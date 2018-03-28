@@ -7,8 +7,6 @@ Requires python-dateutil: https://pypi.python.org/pypi/python-dateutil/2.6.0
 import json
 import dateutil.parser
 
-# Load the json
-obj = json.loads(open("tokens.json").read())
 
 def check_datetime(dt):
     try:
@@ -16,6 +14,10 @@ def check_datetime(dt):
     except:
         print("Error parsing datetime '%s'" % dt)
         raise
+
+
+# Load the json
+obj = json.loads(open("tokens.json").read())
 
 # Check start and end of all entries
 for entry in obj:

@@ -3,7 +3,7 @@ addons:
     packages:
       - python-dateutil
 
-# Verify that the JSON is correct
+# Verify that the JSON is correct (including the dates)
 script:
   - python check-tokens-format.py
 
