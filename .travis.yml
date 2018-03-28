@@ -1,11 +1,11 @@
 addons:
   apt:
     packages:
-      - jq
+      - python-dateutil
 
 # Verify that the JSON is correct
 script:
-  - cat tokens.json | ./jq -e . >/dev/null 2>&1
+  - python check-tokens-format.py
 
 # Deploy to GitHub pages
 deploy:
