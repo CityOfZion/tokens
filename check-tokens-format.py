@@ -17,10 +17,10 @@ def check_datetime(dt):
 
 
 # Load the json
-obj = json.loads(open("tokens.json").read())
+tokens = json.loads(open("tokens.json").read())
 
 # Check start and end of all entries
-for entry in obj:
+for entry in tokens:
     if "start" in entry:
         check_datetime(entry["start"])
     if "end" in entry:
