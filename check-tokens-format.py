@@ -19,5 +19,7 @@ def check_datetime(dt):
 
 # Check start and end of all entries
 for entry in obj:
-    check_datetime(entry["start"])
-    check_datetime(entry["end"])
+    if "start" in entry:
+        check_datetime(entry["start"])
+    if "end" in entry:
+        check_datetime(entry["end"])
