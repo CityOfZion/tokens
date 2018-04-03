@@ -16,12 +16,29 @@ def check_datetime(dt):
         raise
 
 
+def check_block(block_number):
+    if not isinstance(block_number, (int, float)):
+        raise Exception("block_number must be int or float, not %s" % type(block_number))
+
+    if block_number < 0:
+        raise Exception("Block must be greater than 0, is %s" % block_number)
+
+
 # Load the json
 tokens = json.loads(open("tokens.json").read())
 
 # Check start and end of all entries
-for entry in tokens:
-    if "start" in entry:
-        check_datetime(entry["start"])
-    if "end" in entry:
-        check_datetime(entry["end"])
+for token in tokens:
+    if "startTime" in token and "startBlock" in token:
+        raise Exception("Only startTime or startBlock can be specified, not both")
+    if "endTime" in token and "endBlock" in token:
+        raise Exception("Only endTime or endBlock can be specified, not both")
+
+    if "startTime" in token:
+        check_datetime(token["startTime"])
+    if "endTime" in token:
+        check_datetime(token["endTime"])
+    if "startBlock" in token:
+        check_block(token["startBlock"])
+    if "endBlock" in token:
+        check_block(token["endBlock"])
